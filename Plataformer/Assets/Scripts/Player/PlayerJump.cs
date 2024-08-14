@@ -56,28 +56,7 @@ public class PlayerJump : MonoBehaviour
             jumpBufferCounter = 0f;
         }
         
-        // Se houver buffer e a barra de espaço for pressionada, coloca o pulo na fila
-       /* if (buffer && Input.GetKeyDown(KeyCode.Space))
-        {
-            Debug.Log("buffer");
-            jumpQueued = true;
-        }
-
-        if (isGrounded)
-        {
-            // Se estiver no chão ou o pulo estiver na fila, realiza o pulo
-            if (Input.GetKeyDown(KeyCode.Space) && rb.velocity.y == 0)
-            {
-                Debug.Log("pulo");
-                rb.AddForce(Vector3.up * jumpForce, ForceMode.Impulse);
-                jumpQueued = false;
-            }
-
-            else if (jumpQueued && rb.velocity.y == 0)
-            {
-                rb.AddForce(Vector3.up * jumpForce, ForceMode.Impulse);
-                jumpQueued = false;
-            }*/
+      
 
 
 

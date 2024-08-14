@@ -386,7 +386,9 @@
 -analyzer:"C:/Program Files/Unity/Hub/Editor/2023.2.7f1/Editor/Data/Tools/Unity.SourceGenerators/Unity.SourceGenerators.dll"
 -analyzer:"C:/Program Files/Unity/Hub/Editor/2023.2.7f1/Editor/Data/Tools/Unity.SourceGenerators/Unity.UIToolkit.SourceGenerator.dll"
 "Assets/Scripts/Player/PlayerJump.cs"
+"Assets/Scripts/Player/PlayerJumpCC.cs"
 "Assets/Scripts/Player/PlayerMovement.cs"
+"Assets/Scripts/Player/PlayerMovementCC.cs"
 -langversion:9.0
 
 /deterministic
