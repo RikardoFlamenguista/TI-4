@@ -10,7 +10,8 @@ public class PlayerMovement : MonoBehaviour
     private float currentSpeed; // Velocidade atual do personagem
     private Rigidbody rb;
 
-  
+    
+
 
     void Start()
     {

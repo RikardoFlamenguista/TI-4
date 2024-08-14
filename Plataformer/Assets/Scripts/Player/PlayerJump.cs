@@ -12,7 +12,8 @@ public class PlayerJump : MonoBehaviour
 
     private Rigidbody rb;
 
-
+    private float jumpBufferTime = 0.2f;
+    private float jumpBufferCounter;
 
     void Start()
     {
@@ -22,6 +23,19 @@ public class PlayerJump : MonoBehaviour
         // Update is called once per frame
         void Update()
     {
+        if (Input.GetKeyDown(KeyCode.Space))
+        {
+            jumpBufferCounter = jumpBufferTime;
+
+
+        }
+
+        else
+        {
+            jumpBufferCounter -= Time.deltaTime;
+        
+        
+        }
         Jump();
     }
 
@@ -32,8 +46,18 @@ public class PlayerJump : MonoBehaviour
 
         bool buffer = Physics.Raycast(transform.position, Vector3.down, bufferRange, groundLayer);
 
+        if(isGrounded && jumpBufferCounter > 0f)
+        {
+            Vector3 velocity = rb.velocity;
+            velocity.y = 0f;
+            rb.velocity = velocity;
+
+            rb.AddForce(Vector3.up * jumpForce, ForceMode.Impulse);
+            jumpBufferCounter = 0f;
+        }
+        
         // Se houver buffer e a barra de espaço for pressionada, coloca o pulo na fila
-        if (buffer && Input.GetKeyDown(KeyCode.Space))
+       /* if (buffer && Input.GetKeyDown(KeyCode.Space))
         {
             Debug.Log("buffer");
             jumpQueued = true;
@@ -53,7 +77,7 @@ public class PlayerJump : MonoBehaviour
             {
                 rb.AddForce(Vector3.up * jumpForce, ForceMode.Impulse);
                 jumpQueued = false;
-            }
+            }*/
 
 
 
@@ -61,4 +85,4 @@ public class PlayerJump : MonoBehaviour
 
 
     }
-}
+
