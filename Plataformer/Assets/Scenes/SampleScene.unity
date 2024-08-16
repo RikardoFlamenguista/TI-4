@@ -328,7 +328,7 @@ MonoBehaviour:
   startingSpeed: 25
   maximumSpeed: 50
   acceleration: 10
-  breakSpeed: 1
+  breakSpeed: 2
   jumpForce: 10
 --- !u!143 &252905662
 CharacterController:
