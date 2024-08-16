@@ -49,21 +49,4 @@ public class PlayerMovementCC : MonoBehaviour
             currentSpeed = breakSpeed + (currentSpeed / 10);
         }
     }
-
-    /*void ApplyGravity()
-    {
-        // Verifica se o personagem está no chão
-        isGrounded = controller.isGrounded;
-
-        if (isGrounded && velocity.y < 0)
-        {
-            velocity.y = 0f; // Reseta a velocidade vertical ao tocar no chão
-        }
-
-        // Aplica a força da gravidade
-        velocity.y += gravity * Time.deltaTime;
-
-        // Aplica a velocidade vertical ao CharacterController
-        controller.Move(velocity * Time.deltaTime);
-    }*/
 }
