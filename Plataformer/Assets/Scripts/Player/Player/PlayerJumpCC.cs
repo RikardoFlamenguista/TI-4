@@ -5,7 +5,7 @@ using UnityEngine;
 public class PlayerJumpCC : MonoBehaviour
 {
     public float jumpForce = 5f; // Força do pulo
-    
+    public float gravity = -20f; // Força da gravidade
 
     private float jumpBufferTime = 0.2f;
     private float jumpBufferCounter;
@@ -29,11 +29,24 @@ public class PlayerJumpCC : MonoBehaviour
             jumpBufferCounter -= Time.deltaTime;
         }
 
-       
+        ApplyGravity();
         Jump();
     }
 
+    void ApplyGravity()
+    {
+        // Verifica se o personagem está no chão
+        if (controller.isGrounded && velocity.y < 0)
+        {
+            velocity.y = 0f; // Reseta a velocidade vertical ao tocar no chão
+        }
 
+        // Aplica a gravidade
+        velocity.y += gravity * Time.deltaTime;
+
+        // Move o personagem com base na gravidade
+        controller.Move(velocity * Time.deltaTime);
+    }
 
     void Jump()
     {
