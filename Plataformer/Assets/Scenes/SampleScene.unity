@@ -460,7 +460,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   jumpForce: 7
+  extraJumpForce: 0.1
   gravity: -50
+  maxJumpTime: 0.2
+  minJumpTime: 0.15
 --- !u!114 &252905668
 MonoBehaviour:
   m_ObjectHideFlags: 0
