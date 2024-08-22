@@ -14,6 +14,8 @@ public class Player : MonoBehaviour
         }
         else
         {
+            //eh pra destruir instance ou gameobject aqui? Nao lembro, conferir depois//
+            Destroy(Instance);
             Debug.Log("AAAAAAAAAAAAAAAAAAAAAAAA");
         }
     }
@@ -38,7 +40,8 @@ public class Player : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        isGrounded = Physics.Raycast(transform.position, Vector3.down, 1.2f, groundLayer);
+     //   isGrounded = Physics.Raycast(transform.position, Vector3.down, 1.2f, groundLayer);
 
+        isGrounded = controller.isGrounded;
     }
 }

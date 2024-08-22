@@ -41,7 +41,7 @@ public class PlayerJumpCC : MonoBehaviour
     void ApplyGravity()
     {
         // Verifica se o personagem está no chão
-        if (controller.isGrounded && velocity.y < 0)
+        if (Player.Instance.IsGrounded && velocity.y < 0)
         {
             velocity.y = 0f; // Reseta a velocidade vertical ao tocar no chão
         }
@@ -56,7 +56,7 @@ public class PlayerJumpCC : MonoBehaviour
     void HandleJump()
     {
         // Se houver buffer de pulo e o personagem está no chão
-        if (controller.isGrounded && jumpBufferCounter > 0f)
+        if (Player.Instance.IsGrounded && jumpBufferCounter > 0f)
         {
             // Inicia o pulo e o contador de tempo de pulo
             velocity.y = Mathf.Sqrt(jumpForce * -2f * gravity);
@@ -82,7 +82,7 @@ public class PlayerJumpCC : MonoBehaviour
 
     IEnumerator IncreaseJumpTime()
     {
-        bool hasAppliedExtraForce = false; // Flag para garantir que a força extra seja aplicada apenas uma vez
+        bool hasAppliedExtraForce = false; // Flag para garantir que a forca extra seja aplicada apenas uma vez
         int cont = 0;
 
         while (jumpTimeCounter < maxJumpTime)
@@ -92,10 +92,8 @@ public class PlayerJumpCC : MonoBehaviour
             // Aplica a força de pulo adicional uma única vez quando o tempo de pulo ultrapassar minJumpTime
             if (jumpTimeCounter > minJumpTime && !hasAppliedExtraForce)
             {
-                Debug.Log(cont);
-                cont++;
                 velocity.y += Mathf.Sqrt(extraJumpForce * -2f * gravity);
-                hasAppliedExtraForce = true; // Marca que a força extra já foi aplicada
+                hasAppliedExtraForce = true;
             }
 
             yield return null; // Espera até o próximo frame
