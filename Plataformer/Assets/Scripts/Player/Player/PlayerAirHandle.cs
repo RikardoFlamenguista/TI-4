@@ -11,6 +11,7 @@ public class PlayerAirHandle : MonoBehaviour
     private float jumpTimeCounter;
 
     private Coroutine jumpCoroutine;
+    public Coroutine JumpCoroutine { get { return jumpCoroutine; } }
 
     // Start is called before the first frame update
     void Start()
@@ -40,25 +41,33 @@ public class PlayerAirHandle : MonoBehaviour
         controller.Move(velocity * Time.deltaTime);
     }
 
+
+
+
     public void HandleBaseJump(float jumpForce)
     {
+        // Inicia o pulo e o contador de tempo de pulo
         velocity.y = Mathf.Sqrt(jumpForce * -2f * gravity);
 
 
+        // Reseta o contador do buffer de pulo
         jumpTimeCounter = 0f;
 
+        // Move o personagem com a forca aplicada
         controller.Move(velocity * Time.deltaTime);
 
     }
 
-    public void StartBaseJumpCorrotine(float maxJumpTime, float minJumpTime, float extraJumpForce)
+    public void StartBaseJumpCorroutine(float maxJumpTime, float minJumpTime, float extraJumpForce)
     {
+      //  Debug.Log("corrotina iniciada");
         jumpCoroutine = StartCoroutine(IncreaseJumpTime(maxJumpTime, minJumpTime, extraJumpForce));
 
     }
 
-    public void StopBaseJumpCorrotine()
+    public void StopBaseJumpCorroutine()
     {
+      //  Debug.Log("corrotina encerrada");
         StopCoroutine(jumpCoroutine);
         jumpCoroutine = null;
 
@@ -77,6 +86,7 @@ public class PlayerAirHandle : MonoBehaviour
             {
                 velocity.y += Mathf.Sqrt(extraJumpForce * -2f * gravity);
                 hasAppliedExtraForce = true;
+Debug.Log(velocity.y);
             }
 
             yield return null; // Espera até o próximo frame

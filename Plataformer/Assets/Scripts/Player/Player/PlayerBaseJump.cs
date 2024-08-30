@@ -46,28 +46,26 @@ public class PlayerBaseJump : MonoBehaviour
         // Se houver buffer de pulo e o personagem está no chão
         if (Player.Instance.IsGrounded && jumpBufferCounter > 0f)
         {
-            // Inicia o pulo e o contador de tempo de pulo
-            velocity.y = Mathf.Sqrt(jumpForce * -2f * gravity);
-            jumpTimeCounter = 0f;
+            playerAir.HandleBaseJump(jumpForce);
 
             // Reseta o contador do buffer de pulo
             jumpBufferCounter = 0f;
 
             // Inicia a corrotina para incrementar o tempo de pulo enquanto a tecla estiver pressionada
-          
-            jumpCoroutine = StartCoroutine(IncreaseJumpTime());
+
+            playerAir.StartBaseJumpCorroutine(maxJumpTime, minJumpTime, extraJumpForce);
         }
 
         // Para a corrotina quando a tecla for solta
-        if (Input.GetKeyUp(KeyCode.Space) && jumpCoroutine != null)
+        if (Input.GetKeyUp(KeyCode.Space) && playerAir.JumpCoroutine != null)
         {
-            StopCoroutine(jumpCoroutine);
-            jumpCoroutine = null;
+            playerAir.StopBaseJumpCorroutine();
         }
         // Move o personagem com a força aplicada
-        playerAir.controller.Move(velocity * Time.deltaTime);
+     
     }
 
+    /*
     public void HandleDoubleJump(float doubleJumpForce)
     {
         velocity.y = Mathf.Sqrt(doubleJumpForce * -2f * gravity);
@@ -76,25 +74,6 @@ public class PlayerBaseJump : MonoBehaviour
 
 
     }
-
-    // Controla a adicao de forca extra caso o botao de pulo se mantenha pressionado
-    IEnumerator IncreaseJumpTime()
-    {
-        bool hasAppliedExtraForce = false; // Flag para garantir que a forca extra seja aplicada apenas uma vez
-
-        while (jumpTimeCounter < maxJumpTime)
-        {
-            jumpTimeCounter += Time.deltaTime;
-
-            // Aplica a força de pulo adicional uma única vez quando o tempo de pulo ultrapassar minJumpTime
-            if (jumpTimeCounter > minJumpTime && !hasAppliedExtraForce)
-            {
-                velocity.y += Mathf.Sqrt(extraJumpForce * -2f * gravity);
-                hasAppliedExtraForce = true;
-            }
-
-            yield return null; // Espera até o próximo frame
-        }
-    }
-
+    */
+ 
 }

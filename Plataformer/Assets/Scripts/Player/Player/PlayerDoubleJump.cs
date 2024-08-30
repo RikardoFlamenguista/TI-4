@@ -36,7 +36,7 @@ public class PlayerDoubleJump : MonoBehaviour
                 // Pulo duplo
                 // Adicione o código para o pulo duplo aqui
                 canDoubleJump = false; // Desativa o pulo duplo após o uso
-                jumpScript.HandleDoubleJump(doubleJumpForce);
+              //  jumpScript.HandleDoubleJump(doubleJumpForce);
             }
         }
 
