@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class PlayerGravity : MonoBehaviour
 {
-    private PlayerJumpCC jumpScript;
+    private PlayerBaseJump jumpScript;
     private bool isGrounded;
 
     public float gravity = -20f; // Força da gravidade
@@ -12,7 +12,7 @@ public class PlayerGravity : MonoBehaviour
     {
     
 
-        jumpScript = GetComponent<PlayerJumpCC>();
+        jumpScript = GetComponent<PlayerBaseJump>();
     }
 
     void Update()

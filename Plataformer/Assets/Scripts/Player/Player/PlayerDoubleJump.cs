@@ -8,12 +8,12 @@ public class PlayerDoubleJump : MonoBehaviour
     private CharacterController controller;
     public float doubleJumpForce;
 
-    private PlayerJumpCC jumpScript;
+    private PlayerBaseJump jumpScript;
 
     void Start()
     {
         controller = GetComponent<CharacterController>();
-        jumpScript = GetComponent<PlayerJumpCC>();
+        jumpScript = GetComponent<PlayerBaseJump>();
     }
 
     void Update()

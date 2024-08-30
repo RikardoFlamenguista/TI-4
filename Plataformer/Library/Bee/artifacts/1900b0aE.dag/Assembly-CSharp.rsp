@@ -388,9 +388,10 @@
 "Assets/Scripts/Player/Player/Obsolete/PlayerJump.cs"
 "Assets/Scripts/Player/Player/Obsolete/PlayerMovement.cs"
 "Assets/Scripts/Player/Player/Player.cs"
+"Assets/Scripts/Player/Player/PlayerAirHandle.cs"
+"Assets/Scripts/Player/Player/PlayerBaseJump.cs"
 "Assets/Scripts/Player/Player/PlayerDoubleJump.cs"
 "Assets/Scripts/Player/Player/PlayerGravity.cs"
-"Assets/Scripts/Player/Player/PlayerJumpCC.cs"
 "Assets/Scripts/Player/Player/PlayerMovementCC.cs"
 -langversion:9.0
 
