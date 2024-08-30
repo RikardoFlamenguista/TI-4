@@ -6,10 +6,14 @@ public class PlayerDoubleJump : MonoBehaviour
 {
     public bool canDoubleJump = true;
     private CharacterController controller;
+    public float doubleJumpForce;
+
+    private PlayerJumpCC jumpScript;
 
     void Start()
     {
         controller = GetComponent<CharacterController>();
+        jumpScript = GetComponent<PlayerJumpCC>();
     }
 
     void Update()
@@ -32,6 +36,7 @@ public class PlayerDoubleJump : MonoBehaviour
                 // Pulo duplo
                 // Adicione o código para o pulo duplo aqui
                 canDoubleJump = false; // Desativa o pulo duplo após o uso
+                jumpScript.HandleDoubleJump(doubleJumpForce);
             }
         }
 

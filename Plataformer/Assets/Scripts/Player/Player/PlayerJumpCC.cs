@@ -80,6 +80,16 @@ public class PlayerJumpCC : MonoBehaviour
         controller.Move(velocity * Time.deltaTime);
     }
 
+    public void HandleDoubleJump(float doubleJumpForce)
+    {
+        velocity.y = Mathf.Sqrt(doubleJumpForce * -2f * gravity);
+
+        controller.Move(velocity * Time.deltaTime);
+
+
+    }
+
+    // Controla a adicao de forca extra caso o botao de pulo se mantenha pressionado
     IEnumerator IncreaseJumpTime()
     {
         bool hasAppliedExtraForce = false; // Flag para garantir que a forca extra seja aplicada apenas uma vez
