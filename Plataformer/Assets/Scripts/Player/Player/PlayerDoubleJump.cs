@@ -8,12 +8,12 @@ public class PlayerDoubleJump : MonoBehaviour
     private CharacterController controller;
     public float doubleJumpForce;
 
-    private PlayerBaseJump jumpScript;
+    private PlayerAirHandle playerAir;
 
     void Start()
     {
         controller = GetComponent<CharacterController>();
-        jumpScript = GetComponent<PlayerBaseJump>();
+        playerAir = GetComponent<PlayerAirHandle>();
     }
 
     void Update()
@@ -21,22 +21,18 @@ public class PlayerDoubleJump : MonoBehaviour
         DoubleJump();
     }
 
+    //controla o pulo duplo do jogador
     private void DoubleJump()
     {
         // Condição para permitir o pulo duplo
         if (Input.GetKeyDown(KeyCode.Space))
         {
-            if (Player.Instance.IsGrounded)
-            {
-                // Primeiro salto
-                // Adicione o código para o primeiro salto aqui
-            }
-            else if (canDoubleJump)
+      
+            if (canDoubleJump && Player.Instance.IsGroundedDoubleJump == false)
             {
                 // Pulo duplo
-                // Adicione o código para o pulo duplo aqui
+                playerAir.HandleDoubleJump(doubleJumpForce);
                 canDoubleJump = false; // Desativa o pulo duplo após o uso
-              //  jumpScript.HandleDoubleJump(doubleJumpForce);
             }
         }
 

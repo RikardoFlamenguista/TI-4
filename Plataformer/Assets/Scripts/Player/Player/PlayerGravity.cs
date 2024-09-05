@@ -4,6 +4,9 @@ using UnityEngine;
 
 public class PlayerGravity : MonoBehaviour
 {
+    //script nao sendo usado no momento
+
+
     private PlayerBaseJump jumpScript;
     private bool isGrounded;
 
@@ -36,7 +39,7 @@ public class PlayerGravity : MonoBehaviour
 
         // Aplica a gravidade
 
-        Player.Instance.velocity.y += Player.Instance.Gravity * Time.deltaTime;
+   //     Player.Instance.velocity.y += Player.Instance.Gravity * Time.deltaTime;
 
         // Move o personagem com base na gravidade
         Player.Instance.controller.Move(Player.Instance.velocity * Time.deltaTime);

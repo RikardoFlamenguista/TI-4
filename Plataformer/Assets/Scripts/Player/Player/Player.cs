@@ -4,14 +4,20 @@ using UnityEngine;
 
 public class Player : MonoBehaviour
 {
+
     public static Player Instance { get; private set; }
     public CharacterController controller;
+
+    public float groundCheckDistance = 1.5f;
 
     private static bool isGrounded;
     public bool IsGrounded { get { return isGrounded; } set { isGrounded = value; } }
 
-    public float gravity = -20f; // Forca da gravidade
-    public float Gravity { get { return gravity; } set { gravity = value; } }
+    private bool isGroundedDoubleJump;
+    public bool IsGroundedDoubleJump { get { return isGroundedDoubleJump; }  }
+
+    //public float gravity = -20f; // Forca da gravidade
+    //  public float Gravity { get { return gravity; } set { gravity = value; } }
 
     public Vector3 velocity;
 
@@ -37,9 +43,23 @@ public class Player : MonoBehaviour
         //   isGrounded = Physics.Raycast(transform.position, Vector3.down, 1.2f, groundLayer);
 
         isGrounded = controller.isGrounded;
+
+        isGroundedDoubleJump = CheckGroundDoubleJump();
     }
 
+    private bool CheckGroundDoubleJump()
+    {
+        bool hit;
+
+        hit = Physics.Raycast(transform.position, Vector3.down, groundCheckDistance, groundLayer);
+
+        return hit;
+
+    }
+
+   
 
 
 
-}
+
+    }

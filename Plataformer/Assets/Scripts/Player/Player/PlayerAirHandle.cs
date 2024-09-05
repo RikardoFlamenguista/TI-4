@@ -58,6 +58,14 @@ public class PlayerAirHandle : MonoBehaviour
 
     }
 
+    public void HandleDoubleJump(float doubleJumpForce)
+    {
+        velocity.y = Mathf.Sqrt(doubleJumpForce * -2f * gravity);
+
+
+        controller.Move(velocity * Time.deltaTime);
+    }
+
     public void StartBaseJumpCorroutine(float maxJumpTime, float minJumpTime, float extraJumpForce)
     {
       //  Debug.Log("corrotina iniciada");
@@ -86,7 +94,7 @@ public class PlayerAirHandle : MonoBehaviour
             {
                 velocity.y += Mathf.Sqrt(extraJumpForce * -2f * gravity);
                 hasAppliedExtraForce = true;
-Debug.Log(velocity.y);
+
             }
 
             yield return null; // Espera até o próximo frame

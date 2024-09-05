@@ -3,9 +3,9 @@ using UnityEngine;
 
 public class PlayerBaseJump : MonoBehaviour
 {
-    public float jumpForce = 5f; // Força do pulo
+    public float jumpForce = 5f; // Forca do pulo
     public float extraJumpForce = 2f; // Força adicional após minJumpTime
-    public float gravity = -20f; // Força da gravidade
+    public float gravity = -20f; // Forca da gravidade
     public float maxJumpTime = 0.2f; // Tempo máximo que o pulo pode ser sustentado
     public float minJumpTime = 0.1f; // Tempo mínimo para adicionar extraJumpForce
 
@@ -40,7 +40,7 @@ public class PlayerBaseJump : MonoBehaviour
     }
 
   
-
+    //contra o pulo base do jogador
     void HandleJump()
     {
         // Se houver buffer de pulo e o personagem está no chão
@@ -61,19 +61,9 @@ public class PlayerBaseJump : MonoBehaviour
         {
             playerAir.StopBaseJumpCorroutine();
         }
-        // Move o personagem com a força aplicada
      
     }
 
-    /*
-    public void HandleDoubleJump(float doubleJumpForce)
-    {
-        velocity.y = Mathf.Sqrt(doubleJumpForce * -2f * gravity);
-
-        playerAir.controller.Move(velocity * Time.deltaTime);
-
-
-    }
-    */
+   
  
 }
