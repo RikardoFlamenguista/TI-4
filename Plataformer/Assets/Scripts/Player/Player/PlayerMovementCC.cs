@@ -1,22 +1,17 @@
 using UnityEngine;
 
-public class PlayerMovementCC: MonoBehaviour
+public class PlayerMovementCC : MonoBehaviour
 {
     public float startingSpeed = 5f;
     public float maximumSpeed = 10f;
     public float acceleration = 1f;
-    public float breakSpeed = 1f;
     public float jumpForce = 10f; // Força do pulo
 
     private float currentSpeed; // Velocidade atual do personagem
     private CharacterController controller;
 
-  
-
     void Start()
     {
-        controller = GetComponent<CharacterController>();
-
         controller = GetComponent<CharacterController>();
         currentSpeed = startingSpeed; // Define a velocidade inicial como startingSpeed
     }
@@ -45,8 +40,8 @@ public class PlayerMovementCC: MonoBehaviour
         }
         else
         {
-            // Diminui a velocidade assim que o Input se encerra
-            currentSpeed = breakSpeed + (currentSpeed / 10);
+            // Para imediatamente quando o input se encerra
+            currentSpeed = 0f;
         }
     }
 }
