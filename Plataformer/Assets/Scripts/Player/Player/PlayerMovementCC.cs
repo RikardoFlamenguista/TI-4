@@ -2,18 +2,14 @@ using UnityEngine;
 
 public class PlayerMovementCC : MonoBehaviour
 {
-    public float startingSpeed = 5f;
-    public float maximumSpeed = 10f;
-    public float acceleration = 1f;
+    public float moveSpeed = 5f;  // Velocidade fixa do jogador
     public float jumpForce = 10f; // Força do pulo
 
-    private float currentSpeed; // Velocidade atual do personagem
     private CharacterController controller;
 
     void Start()
     {
         controller = GetComponent<CharacterController>();
-        currentSpeed = startingSpeed; // Define a velocidade inicial como startingSpeed
     }
 
     void Update()
@@ -23,25 +19,30 @@ public class PlayerMovementCC : MonoBehaviour
 
     void Move()
     {
-        float moveHorizontal = Input.GetAxis("Horizontal"); // A/D ou Setas Esquerda/Direita
-        float moveVertical = Input.GetAxis("Vertical");     // W/S ou Setas Cima/Baixo
+      
 
-        // Cria um vetor de movimento com base nas entradas
-        Vector3 movement = new Vector3(moveHorizontal, 0.0f, moveVertical);
+        // Cria um vetor de movimento com base nas entradas, mas apenas se houver input
+        Vector3 movement = SaveMoveInput();
 
         if (movement.magnitude > 0)
         {
-            // Aumenta a velocidade atual até o limite de maximumSpeed
-            currentSpeed += acceleration * Time.deltaTime;
-            currentSpeed = Mathf.Min(currentSpeed, maximumSpeed); // Garante que a velocidade não exceda o máximo
-
-            // Aplica a movimentação no CharacterController
-            controller.Move(movement.normalized * currentSpeed * Time.deltaTime);
+            // Aplica a movimentação no CharacterController com velocidade constante
+            controller.Move(movement * moveSpeed * Time.deltaTime);
         }
         else
         {
-            // Para imediatamente quando o input se encerra
-            currentSpeed = 0f;
+            // Para completamente o movimento quando não houver input
+            controller.Move(Vector3.zero);
         }
+    }
+
+    public Vector3 SaveMoveInput()
+    {
+        float moveHorizontal = Input.GetAxisRaw("Horizontal"); // A/D ou Setas Esquerda/Direita
+        float moveVertical = Input.GetAxisRaw("Vertical");     // W/S ou Setas Cima/Baixo
+        Vector3 movement = new Vector3(moveHorizontal, 0.0f, moveVertical).normalized;
+
+  
+        return movement;
     }
 }

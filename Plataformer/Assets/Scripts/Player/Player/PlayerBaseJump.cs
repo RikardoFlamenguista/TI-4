@@ -26,6 +26,7 @@ public class PlayerBaseJump : MonoBehaviour
 
     void Update()
     {
+        //salva o input de pulo do jogador caso esteja no ar, para caso encosta no solo em poucos frames o pulo ainda seja efetuado
         if (Input.GetKeyDown(KeyCode.Space))
         {
             jumpBufferCounter = jumpBufferTime;

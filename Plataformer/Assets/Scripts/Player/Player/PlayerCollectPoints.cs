@@ -11,7 +11,6 @@ public class PlayerCollectPoints : MonoBehaviour
         // Verifica se o objeto está na layer "CollectiblePoint" usando LayerMask
         if (((1 << other.gameObject.layer) & pointLayer) != 0)
         {
-            Debug.Log("Coletável detectado: " + other.gameObject.name);
 
             // Ação a ser realizada quando a colisão ocorre
             Collect(other.gameObject);

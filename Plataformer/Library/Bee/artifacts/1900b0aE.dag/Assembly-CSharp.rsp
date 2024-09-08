@@ -391,6 +391,7 @@
 "Assets/Scripts/Player/Player/PlayerAirHandle.cs"
 "Assets/Scripts/Player/Player/PlayerBaseJump.cs"
 "Assets/Scripts/Player/Player/PlayerCollectPoints.cs"
+"Assets/Scripts/Player/Player/PlayerDash.cs"
 "Assets/Scripts/Player/Player/PlayerDoubleJump.cs"
 "Assets/Scripts/Player/Player/PlayerGravity.cs"
 "Assets/Scripts/Player/Player/PlayerMovementCC.cs"

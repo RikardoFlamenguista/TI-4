@@ -24,6 +24,13 @@ public class PlayerAirHandle : MonoBehaviour
     {
         ApplyGravity();
 
+        //caso o jogador esteja em um dash, zera sua velocidade vertical;
+        if (isDashing)
+        {
+            velocity.y = 0;
+            controller.Move(velocity * Time.deltaTime);
+
+        }
     }
 
     private void ApplyGravity()
@@ -53,8 +60,9 @@ public class PlayerAirHandle : MonoBehaviour
         // Reseta o contador do buffer de pulo
         jumpTimeCounter = 0f;
 
+      
         // Move o personagem com a forca aplicada
-        controller.Move(velocity * Time.deltaTime);
+         controller.Move(velocity * Time.deltaTime);
 
     }
 
@@ -63,8 +71,74 @@ public class PlayerAirHandle : MonoBehaviour
         velocity.y = Mathf.Sqrt(doubleJumpForce * -2f * gravity);
 
 
-        controller.Move(velocity * Time.deltaTime);
+      
+         controller.Move(velocity * Time.deltaTime);
     }
+
+
+
+
+
+
+
+    private bool isDashing = false;
+    private float lastDashTime = -1f;
+    public void HandleDash(float dashSpeed,float maxDashSpeed, Vector3 dashDirection, float dashTimeLeft, float dashDuration)
+    {
+
+        StartCoroutine(HandleDashIE(maxDashSpeed, dashDirection, dashDuration));
+        lastDashTime = Time.time;
+
+        /*controller.Move(dashDirection * dashSpeed * Time.deltaTime);
+        dashTimeLeft -= Time.deltaTime;
+        dashSpeed = Mathf.Lerp(maxDashSpeed, 0f, 1 - (dashTimeLeft / dashDuration));
+        */
+
+
+
+
+
+    }
+
+
+    public IEnumerator HandleDashIE(float dashSpeed, Vector3 dashDirection, float dashDuration)
+    {
+        isDashing = true;
+
+        // Temporariamente desativa a gravidade
+        float originalGravity = gravity;
+        gravity = 0f;
+
+        float dashTimeLeft = dashDuration;
+
+        while (dashTimeLeft > 0)
+        {
+            // Move o personagem na direção do dash
+            controller.Move(dashDirection * dashSpeed * Time.deltaTime);
+
+            // Reduz a duração do dash
+            dashTimeLeft -= Time.deltaTime;
+
+            // Desacelera a velocidade do dash ao longo do tempo
+            dashSpeed = Mathf.Lerp(dashSpeed, 0f, 1 - (dashTimeLeft / dashDuration));
+
+            yield return null;  // Espera o próximo frame
+        }
+
+        Debug.Log("codigo chegou aqui");
+        // Reativa a gravidade quando o dash termina
+        gravity = originalGravity;
+        isDashing = false;
+    }
+
+
+
+
+
+
+
+
+
 
     public void StartBaseJumpCorroutine(float maxJumpTime, float minJumpTime, float extraJumpForce)
     {

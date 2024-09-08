@@ -447,6 +447,7 @@ GameObject:
   - component: {fileID: 252905670}
   - component: {fileID: 252905671}
   - component: {fileID: 252905673}
+  - component: {fileID: 252905674}
   m_Layer: 0
   m_Name: Player Cc
   m_TagString: Untagged
@@ -466,9 +467,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9fbbe0e0d2b4ba9438d07c552583d5f5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  startingSpeed: 30
-  maximumSpeed: 35
-  acceleration: 30
+  moveSpeed: 25
   jumpForce: 10
 --- !u!143 &252905662
 CharacterController:
@@ -697,6 +696,21 @@ MonoBehaviour:
   pointLayer:
     serializedVersion: 2
     m_Bits: 64
+--- !u!114 &252905674
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 252905659}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6d94eb46d47393c45a02cc3ca6146604, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  dashSpeed: 50
+  dashDuration: 0.2
+  maxDashSpeed: 100
 --- !u!1 &254063409
 GameObject:
   m_ObjectHideFlags: 0
