@@ -17,11 +17,19 @@ public class PlayerCollectPoints : MonoBehaviour
         }
     }
 
+    private void Update()
+    {
+        
+
+
+
+    }
+
     // Método genérico de coleta
     void Collect(GameObject collectible)
     {
  collectible.SetActive(false);
 
-
+        GameController.Instance.CollectPoint();
     }
 }
