@@ -5,6 +5,7 @@ using UnityEngine;
 public class PlayerCollectPoints : MonoBehaviour
 {
     public LayerMask pointLayer;
+    public LayerMask victoryLayer;
 
     void OnTriggerEnter(Collider other)
     {
@@ -14,6 +15,15 @@ public class PlayerCollectPoints : MonoBehaviour
 
             // Ação a ser realizada quando a colisão ocorre
             Collect(other.gameObject);
+        }
+
+        // Verifica se o objeto está na layer "CollectiblePoint" usando LayerMask
+        if (((1 << other.gameObject.layer) & victoryLayer) != 0)
+        {
+
+            // Ação a ser realizada quando a colisão ocorre
+            Victory(other.gameObject);
+            
         }
     }
 
@@ -26,10 +36,19 @@ public class PlayerCollectPoints : MonoBehaviour
     }
 
     // Método genérico de coleta
-    void Collect(GameObject collectible)
+    private void Collect(GameObject collectible)
     {
  collectible.SetActive(false);
 
         GameController.Instance.CollectPoint();
+    }
+
+    private void Victory(GameObject victoryGO)
+    {
+        victoryGO.SetActive(false);
+
+
+        GameController.Instance.Victory();
+
     }
 }

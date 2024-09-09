@@ -17,6 +17,7 @@ public class GameController : MonoBehaviour
     public GameObject pauseMenu;
     private bool isPaused = false;
 
+    public GameObject victoryMenu;
 
 
 
@@ -120,6 +121,13 @@ public class GameController : MonoBehaviour
 #else
         Application.Quit();
 #endif
+
+    }
+
+    public void Victory()
+    {
+        victoryMenu.SetActive(true);
+        Time.timeScale = 0.0f;
 
     }
 

@@ -396,6 +396,7 @@
 "Assets/Scripts/Player/Player/PlayerDoubleJump.cs"
 "Assets/Scripts/Player/Player/PlayerGravity.cs"
 "Assets/Scripts/Player/Player/PlayerMovementCC.cs"
+"Assets/Scripts/UI/Dialogue.cs"
 "Assets/Scripts/UI/PauseManager.cs"
 "Assets/Scripts/UI/SpriteFollowTarget.cs"
 -langversion:9.0
