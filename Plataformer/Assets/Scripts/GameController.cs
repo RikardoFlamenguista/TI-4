@@ -12,12 +12,13 @@ public class GameController : MonoBehaviour
     public GameObject points;
     public TextMeshProUGUI pointsText;
     private int pointsLeft;
-    private int collectedPoints;
+    private int collectedPoints = 0;
 
     public GameObject pauseMenu;
     private bool isPaused = false;
 
     public GameObject victoryMenu;
+    private int totalPoints;
 
 
 
@@ -34,11 +35,13 @@ public class GameController : MonoBehaviour
             Destroy(Instance);
             Debug.Log("Instancia ja existe, deletando");
         }
+       
 
         //o menu de pause deve estar desativado no inicio do jogo
         pauseMenu.SetActive(false);
 
         SetStartPoints();
+    
 
     }
 
@@ -53,21 +56,21 @@ public class GameController : MonoBehaviour
     private void SetStartPoints()
     {
         pointsLeft = points.transform.childCount;
-        pointsText.text = "Pontos restantes: " + pointsLeft.ToString();
+        totalPoints = pointsLeft;
+        pointsText.text = collectedPoints.ToString() + "/" + totalPoints.ToString();
     }
 
     //chamado por PlayerCollectPoints sempre que o jogador coleta um ponto, ajusta a variavel de pontos restantes e atualiza o texto
     public void CollectPoint()
     {
-
         pointsLeft = pointsLeft - 1;
 
-        pointsText.text = "Pontos restantes: " + pointsLeft.ToString();
+        collectedPoints = collectedPoints + 1;
+        pointsText.text = collectedPoints.ToString() + "/" + totalPoints.ToString();
 
 
 
         //por enquanto essa variavel nao vai fazer nada, so vai ser util quando a mecanica de gastar pontos for implementada
-        collectedPoints = collectedPoints + 1;
     }
 
     //controla jogo pausado e despausado usando tecla de atalho do teclado
