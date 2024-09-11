@@ -13,6 +13,7 @@ public class GameController : MonoBehaviour
     public TextMeshProUGUI pointsText;
     private int pointsLeft;
     private int collectedPoints = 0;
+    public int CollectedPoints { get { return collectedPoints; } set { collectedPoints = value; } }
 
     public GameObject pauseMenu;
     private bool isPaused = false;
@@ -52,12 +53,18 @@ public class GameController : MonoBehaviour
 
     }
 
+    public void RefreshCollectedPointsUI()
+    {
+
+        pointsText.text = collectedPoints.ToString() + "/" + totalPoints.ToString();
+    }
+
     //metodo chamado apenas no awake para ajustar a UI de pontos
     private void SetStartPoints()
     {
         pointsLeft = points.transform.childCount;
         totalPoints = pointsLeft;
-        pointsText.text = collectedPoints.ToString() + "/" + totalPoints.ToString();
+        RefreshCollectedPointsUI();
     }
 
     //chamado por PlayerCollectPoints sempre que o jogador coleta um ponto, ajusta a variavel de pontos restantes e atualiza o texto
@@ -66,7 +73,7 @@ public class GameController : MonoBehaviour
         pointsLeft = pointsLeft - 1;
 
         collectedPoints = collectedPoints + 1;
-        pointsText.text = collectedPoints.ToString() + "/" + totalPoints.ToString();
+        RefreshCollectedPointsUI();
 
 
 

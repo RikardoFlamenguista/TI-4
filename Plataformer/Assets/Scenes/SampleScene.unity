@@ -451,6 +451,7 @@ GameObject:
   - component: {fileID: 252905671}
   - component: {fileID: 252905673}
   - component: {fileID: 252905674}
+  - component: {fileID: 252905676}
   - component: {fileID: 252905675}
   m_Layer: 0
   m_Name: Player Cc
@@ -733,7 +734,23 @@ MonoBehaviour:
   dialogueLayer:
     serializedVersion: 2
     m_Bits: 256
-  dialogueInput: 0
+  input: 0
+--- !u!114 &252905676
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 252905659}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 18b41686d3e9935488245fd2bedb1cdf, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  obstacleDestroyerLayer:
+    serializedVersion: 2
+    m_Bits: 512
+  input: 0
 --- !u!1 &254063409
 GameObject:
   m_ObjectHideFlags: 0
@@ -1509,8 +1526,8 @@ GameObject:
   - component: {fileID: 452638013}
   - component: {fileID: 452638012}
   - component: {fileID: 452638011}
-  - component: {fileID: 452638010}
-  m_Layer: 8
+  - component: {fileID: 452638015}
+  m_Layer: 9
   m_Name: Dialogue Input (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1526,29 +1543,12 @@ Transform:
   m_GameObject: {fileID: 452638008}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 9.55, y: -1.46, z: -1.62}
+  m_LocalPosition: {x: 9.55, y: -2.68, z: -1.62}
   m_LocalScale: {x: 14.532719, y: 1.76, z: 6.6418877}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 168564138}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &452638010
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 452638008}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e1f2c99d288c5824faa61c004f094aaa, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  lines:
-  - hahaha eu prendi o cubo amarelo
-  - coloque 12 cubos verdes no retangulo azul
-  - que eu liberto o amarelo :)
-  dialogueManagerGO: {fileID: 1946111901}
 --- !u!54 &452638011
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -1649,6 +1649,20 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 452638008}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!114 &452638015
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 452638008}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9bbb07d9063c32844b21ca248e7fb936, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  requiredPoints: 6
+  obstacle: {fileID: 1978191716}
 --- !u!1 &455245815
 GameObject:
   m_ObjectHideFlags: 0
@@ -7906,7 +7920,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1978191717}
   m_Layer: 0
-  m_Name: Prison
+  m_Name: Obstacle
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
