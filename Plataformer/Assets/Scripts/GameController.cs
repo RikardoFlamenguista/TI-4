@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 
 public class GameController : MonoBehaviour
@@ -19,6 +20,8 @@ public class GameController : MonoBehaviour
     private bool isPaused = false;
 
     public GameObject victoryMenu;
+    public GameObject gameOverMenu;
+
     private int totalPoints;
 
 
@@ -121,6 +124,7 @@ public class GameController : MonoBehaviour
 
     }
 
+    //sai do jogo
     public void QuitGame()
     {
         Time.timeScale = 1.0f;
@@ -134,9 +138,26 @@ public class GameController : MonoBehaviour
 
     }
 
+    //reinicia o jogo (atualmente nao tem checkpoint, entao reinicia desde o inicio)
+    public void RestartGame()
+    {
+        Time.timeScale = 1.0f;
+        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+
+    }
+
+    //ativa o menu de vitoria
     public void Victory()
     {
         victoryMenu.SetActive(true);
+        Time.timeScale = 0.0f;
+
+    }
+
+    //ativa o menu de game over
+    public void GameOver()
+    {
+        gameOverMenu.SetActive(true);
         Time.timeScale = 0.0f;
 
     }
