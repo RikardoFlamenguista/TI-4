@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+//controla a deteccao de areas e input para iniciar dialogo
 public class PlayerDetectDialogue : MonoBehaviour
 {
     public LayerMask dialogueLayer;
@@ -12,11 +13,9 @@ public class PlayerDetectDialogue : MonoBehaviour
 
     void OnTriggerStay(Collider other)
     {
-        // Verifica se o objeto está na layer "CollectiblePoint" usando LayerMask
         if (((1 << other.gameObject.layer) & dialogueLayer) != 0)
         {
 
-            // Ação a ser realizada quando a colisão ocorre
             if (input)
             {
                 dialogue = other.gameObject.GetComponent<Dialogue>();
@@ -27,12 +26,11 @@ public class PlayerDetectDialogue : MonoBehaviour
             }
         }
     }
-        // Start is called before the first frame update
+
         void Start()
         {
         }
 
-        // Update is called once per frame
         void Update()
         {
             if (Input.GetKeyDown(KeyCode.E))
@@ -43,6 +41,7 @@ public class PlayerDetectDialogue : MonoBehaviour
 
         }
 
+    //mantem o bool tivo por um segundo depois de input acontecer
     private IEnumerator InputTime()
     {
         yield return new WaitForSeconds(1);

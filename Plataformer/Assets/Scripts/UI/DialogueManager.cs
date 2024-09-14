@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
 
+//responsavel por controlar a caixa de dialogo e os textos aparecendo na tela
 public class DialogueManager : MonoBehaviour
 {
     public TextMeshProUGUI textComponent;
@@ -15,20 +16,16 @@ public class DialogueManager : MonoBehaviour
 
     private bool dialogueGoing = false;
 
-    // Start is called before the first frame update
     void Start()
     {
         textComponent.text = string.Empty;
         dialogueBox.SetActive(false);
     }
 
-    // Update is called once per frame
     void Update()
     {
+        //avanca para o dialogo ou encerra a conversa, dependendo de quanto ja foi escrito
         if (dialogueGoing){
-
-
-        
         {
             
         }

@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Runtime.CompilerServices;
 using UnityEngine;
 
+//gerencia as variaveis que controlam a forca e Input para dash do jogador
 public class PlayerDash : MonoBehaviour
 {
     private PlayerAirHandle playerAir;
@@ -23,7 +24,6 @@ public class PlayerDash : MonoBehaviour
         playerMovement = GetComponent<PlayerMovementCC>();
     }
 
-    // Update is called once per frame
     void Update()
     {
         GetDashDirection();
@@ -32,7 +32,7 @@ public class PlayerDash : MonoBehaviour
         
     }
 
-
+    //todo frame verifica qual foi a ultima direcao em que o jogador se movimentou, sera nessa direcao que o dash acontecera
     public void GetDashDirection()
     {
         if(playerMovement.SaveMoveInput() != new Vector3(0.0f,0.0f,0.0f))  dashDirection = playerMovement.SaveMoveInput();
@@ -40,6 +40,7 @@ public class PlayerDash : MonoBehaviour
     
     }
 
+    //detecta input de dash, faz ajuste necessario nas variaveis, e chama o metodo responsavel pela aplicacao das forcas no PlayerAirHandle
     public void HandleDash()
     {
         //como o dash so pode ser feito no ar, IsGrounded deve ser falso

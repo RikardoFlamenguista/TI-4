@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+//controla a deteccao de pontos e objetivo de vitoria
 public class PlayerCollectPoints : MonoBehaviour
 {
     public LayerMask pointLayer;
@@ -9,33 +10,20 @@ public class PlayerCollectPoints : MonoBehaviour
 
     void OnTriggerEnter(Collider other)
     {
-        // Verifica se o objeto está na layer "CollectiblePoint" usando LayerMask
         if (((1 << other.gameObject.layer) & pointLayer) != 0)
         {
-
-            // Ação a ser realizada quando a colisão ocorre
             Collect(other.gameObject);
+       
         }
 
-        // Verifica se o objeto está na layer "CollectiblePoint" usando LayerMask
         if (((1 << other.gameObject.layer) & victoryLayer) != 0)
         {
-
-            // Ação a ser realizada quando a colisão ocorre
             Victory(other.gameObject);
             
         }
     }
 
-    private void Update()
-    {
-        
-
-
-
-    }
-
-    // Método genérico de coleta
+    //chama o metodo que controla a coleta de pontos no GameController
     private void Collect(GameObject collectible)
     {
  collectible.SetActive(false);
@@ -43,6 +31,7 @@ public class PlayerCollectPoints : MonoBehaviour
         GameController.Instance.CollectPoint();
     }
 
+    //chama o metodo que controla a vitoria de pontos no GameController
     private void Victory(GameObject victoryGO)
     {
         victoryGO.SetActive(false);

@@ -1,5 +1,6 @@
 using UnityEngine;
 
+//gerencia o movimento em solo do jogador
 public class PlayerMovementCC : MonoBehaviour
 {
     public float moveSpeed = 5f;  // Velocidade fixa do jogador
@@ -17,6 +18,7 @@ public class PlayerMovementCC : MonoBehaviour
         Move();
     }
 
+    //move o jogador
     void Move()
     {
       
@@ -36,6 +38,7 @@ public class PlayerMovementCC : MonoBehaviour
         }
     }
 
+    //salva os inputs de movimento do jogador, acessado pelo PlayerDash para obter a direcao de movimento 
     public Vector3 SaveMoveInput()
     {
         float moveHorizontal = Input.GetAxisRaw("Horizontal"); // A/D ou Setas Esquerda/Direita

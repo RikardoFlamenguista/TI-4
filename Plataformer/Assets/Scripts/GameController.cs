@@ -5,6 +5,7 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 
 
+//classe estatica, game controller assuntos gerais, pause, game over, tempo restante, contagem de pontos, etc
 public class GameController : MonoBehaviour
 {
     public static GameController Instance { get; private set; }
@@ -13,16 +14,19 @@ public class GameController : MonoBehaviour
     public GameObject points;
     public TextMeshProUGUI pointsText;
     private int pointsLeft;
+    private int totalPoints;
     private int collectedPoints = 0;
     public int CollectedPoints { get { return collectedPoints; } set { collectedPoints = value; } }
 
+
+
+    //variaveis de menus
     public GameObject pauseMenu;
     private bool isPaused = false;
 
     public GameObject victoryMenu;
     public GameObject gameOverMenu;
 
-    private int totalPoints;
 
 
 
@@ -44,6 +48,7 @@ public class GameController : MonoBehaviour
         //o menu de pause deve estar desativado no inicio do jogo
         pauseMenu.SetActive(false);
 
+        //no comeco do jogo ajusta a UI de pontos
         SetStartPoints();
     
 
@@ -56,6 +61,7 @@ public class GameController : MonoBehaviour
 
     }
 
+    //atualiza a UI de pontos restantes
     public void RefreshCollectedPointsUI()
     {
 
@@ -78,9 +84,6 @@ public class GameController : MonoBehaviour
         collectedPoints = collectedPoints + 1;
         RefreshCollectedPointsUI();
 
-
-
-        //por enquanto essa variavel nao vai fazer nada, so vai ser util quando a mecanica de gastar pontos for implementada
     }
 
     //controla jogo pausado e despausado usando tecla de atalho do teclado

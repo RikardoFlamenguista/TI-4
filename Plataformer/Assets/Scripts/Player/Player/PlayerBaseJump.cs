@@ -1,6 +1,7 @@
 using System.Collections;
 using UnityEngine;
 
+//gerencia as variaveis que controlam a forca e Input para pulo base do jogador
 public class PlayerBaseJump : MonoBehaviour
 {
     public float jumpForce = 5f; // Forca do pulo

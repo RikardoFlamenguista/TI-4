@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 
+//controla tempo restante no level
 public class TimerController : MonoBehaviour
 {
     public float maxTime = 60;

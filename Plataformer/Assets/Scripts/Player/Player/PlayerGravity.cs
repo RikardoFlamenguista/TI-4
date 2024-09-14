@@ -11,6 +11,8 @@ public class PlayerGravity : MonoBehaviour
     private bool isGrounded;
 
     public float gravity = -20f; // Força da gravidade
+    
+   
     private void Start()
     {
     
@@ -30,10 +32,10 @@ public class PlayerGravity : MonoBehaviour
         // Verifica se o personagem está no chão
         isGrounded = Player.Instance.controller.isGrounded;
 
-        if (
-           isGrounded && Player.Instance.velocity.y < 0)
+   //     if (
+         //  isGrounded && Player.Instance.velocity.y < 0)
         {
-            Player.Instance.velocity.y = 0f; // Reseta a velocidade vertical ao tocar no chão
+           // Player.Instance.velocity.y = 0f; // Reseta a velocidade vertical ao tocar no chão
 
         }
 
@@ -42,6 +44,6 @@ public class PlayerGravity : MonoBehaviour
    //     Player.Instance.velocity.y += Player.Instance.Gravity * Time.deltaTime;
 
         // Move o personagem com base na gravidade
-        Player.Instance.controller.Move(Player.Instance.velocity * Time.deltaTime);
+       // Player.Instance.controller.Move(Player.Instance.velocity * Time.deltaTime);
     }
 }

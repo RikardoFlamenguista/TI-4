@@ -400,6 +400,7 @@
 "Assets/Scripts/Player/Player/PlayerDoubleJump.cs"
 "Assets/Scripts/Player/Player/PlayerGravity.cs"
 "Assets/Scripts/Player/Player/PlayerMovementCC.cs"
+"Assets/Scripts/Player/Player/PlayerVoid.cs"
 "Assets/Scripts/TimerController.cs"
 "Assets/Scripts/UI/DialogueManager.cs"
 "Assets/Scripts/UI/PauseManager.cs"

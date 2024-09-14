@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+//controla a aplicacao de fisica aerea do jogador. Gravidade, salto, salto duplo e dash
 public class PlayerAirHandle : MonoBehaviour
 {
     public CharacterController controller;
@@ -9,6 +10,9 @@ public class PlayerAirHandle : MonoBehaviour
     public float gravity = -20f;
 
     private float jumpTimeCounter;
+
+    private bool isDashing = false;
+    private float lastDashTime = -1f;
 
     private Coroutine jumpCoroutine;
     public Coroutine JumpCoroutine { get { return jumpCoroutine; } }
@@ -33,24 +37,22 @@ public class PlayerAirHandle : MonoBehaviour
         }
     }
 
+    //aplica gravidade no jogador
     private void ApplyGravity()
     {
-        // Verifica se o personagem está no chão
         if (Player.Instance.IsGrounded && velocity.y < 0)
         {
-            velocity.y = 0f; // Reseta a velocidade vertical ao tocar no chão
+            velocity.y = 0f;
         }
 
-        // Aplica a gravidade
         velocity.y += gravity * Time.deltaTime;
 
-        // Move o personagem com base na gravidade
         controller.Move(velocity * Time.deltaTime);
     }
 
 
 
-
+    //gerencia a aplicacao de forca do salto base do jogador, a deteccao de Input eh feita em PlayerBaseJump
     public void HandleBaseJump(float jumpForce)
     {
         // Inicia o pulo e o contador de tempo de pulo
@@ -66,6 +68,7 @@ public class PlayerAirHandle : MonoBehaviour
 
     }
 
+    //gerencia a aplicacao de forca do salto duplo do jogador, a deteccao de Input eh feita em PlayerDoubleJump
     public void HandleDoubleJump(float doubleJumpForce)
     {
         velocity.y = Mathf.Sqrt(doubleJumpForce * -2f * gravity);
@@ -75,32 +78,16 @@ public class PlayerAirHandle : MonoBehaviour
          controller.Move(velocity * Time.deltaTime);
     }
 
-
-
-
-
-
-
-    private bool isDashing = false;
-    private float lastDashTime = -1f;
+   //gerencia a aplicacao de forca do dash, a detecao de Input eh feita em PlayerDash
     public void HandleDash(float dashSpeed,float maxDashSpeed, Vector3 dashDirection, float dashTimeLeft, float dashDuration)
     {
 
         StartCoroutine(HandleDashIE(maxDashSpeed, dashDirection, dashDuration));
         lastDashTime = Time.time;
 
-        /*controller.Move(dashDirection * dashSpeed * Time.deltaTime);
-        dashTimeLeft -= Time.deltaTime;
-        dashSpeed = Mathf.Lerp(maxDashSpeed, 0f, 1 - (dashTimeLeft / dashDuration));
-        */
-
-
-
-
-
     }
 
-
+    //corrotina que desativa gravidade enquanto jogador esta dando dash e move o personagem para frente
     public IEnumerator HandleDashIE(float dashSpeed, Vector3 dashDirection, float dashDuration)
     {
         isDashing = true;
@@ -139,31 +126,31 @@ public class PlayerAirHandle : MonoBehaviour
 
 
 
-
+    //inicia a corrotina de buffer do pulo base, chamado por PlayerBaseJump
     public void StartBaseJumpCorroutine(float maxJumpTime, float minJumpTime, float extraJumpForce)
     {
-      //  Debug.Log("corrotina iniciada");
         jumpCoroutine = StartCoroutine(IncreaseJumpTime(maxJumpTime, minJumpTime, extraJumpForce));
 
     }
 
+    //encerra a corrotina de buffer do pulo base, chamado por PlayerBaseJump
     public void StopBaseJumpCorroutine()
     {
-      //  Debug.Log("corrotina encerrada");
         StopCoroutine(jumpCoroutine);
         jumpCoroutine = null;
 
     }
 
+    //corrotina que controla a forca do salto do jogador baseado no tempo que a tecla se manteve pressionada
     IEnumerator IncreaseJumpTime( float maxJumpTime, float minJumpTime, float extraJumpForce)
     {
-        bool hasAppliedExtraForce = false; // Flag para garantir que a forca extra seja aplicada apenas uma vez
+        bool hasAppliedExtraForce = false; // garante que a forca extra seja aplicada apenas uma vez
 
         while (jumpTimeCounter < maxJumpTime)
         {
             jumpTimeCounter += Time.deltaTime;
 
-            // Aplica a força de pulo adicional uma única vez quando o tempo de pulo ultrapassar minJumpTime
+            // Aplica a forca de pulo adicional uma única vez quando o tempo de pulo ultrapassar minJumpTime
             if (jumpTimeCounter > minJumpTime && !hasAppliedExtraForce)
             {
                 velocity.y += Mathf.Sqrt(extraJumpForce * -2f * gravity);
@@ -171,7 +158,7 @@ public class PlayerAirHandle : MonoBehaviour
 
             }
 
-            yield return null; // Espera até o próximo frame
+            yield return null;
         }
     }
 }

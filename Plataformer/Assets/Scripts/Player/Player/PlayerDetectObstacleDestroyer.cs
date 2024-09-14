@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+//controla a deteccao de areas e input para destuir obstaculos
 public class PlayerDetectObstacleDestroyer : MonoBehaviour
 {
     public LayerMask obstacleDestroyerLayer;
@@ -12,16 +13,13 @@ public class PlayerDetectObstacleDestroyer : MonoBehaviour
 
     void OnTriggerStay(Collider other)
     {
-        // Verifica se o objeto está na layer "CollectiblePoint" usando LayerMask
         if (((1 << other.gameObject.layer) & obstacleDestroyerLayer) != 0)
         {
 
-            // Ação a ser realizada quando a colisão ocorre
             if (input)
             {
                 obstacleDestroyer = other.gameObject.GetComponent<ObstacleDestroyer>();
                 obstacleDestroyer.DestroyObstacleRequest();
-                Debug.Log("dialogo encontrado");
 
                 input = false;
             }
@@ -38,6 +36,7 @@ public class PlayerDetectObstacleDestroyer : MonoBehaviour
 
     }
 
+    //mantem o bool tivo por um segundo depois de input acontecer
     private IEnumerator InputTime()
     {
         yield return new WaitForSeconds(1);
