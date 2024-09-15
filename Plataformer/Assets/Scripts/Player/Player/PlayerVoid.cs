@@ -9,9 +9,12 @@ public class PlayerVoid : MonoBehaviour
     public Vector3 position;
     public Vector3 startingPosition;
 
+    private CharacterController controller;
+
     void Start()
     {
         startingPosition = transform.position;
+    controller = GetComponent<CharacterController>();   
     }
 
     private void Update()
@@ -23,8 +26,11 @@ public class PlayerVoid : MonoBehaviour
     {
         if (((1 << other.gameObject.layer) & voidLayer) != 0)
         {
-            Debug.Log("Colisão detectada com o void.");
+            controller.enabled = false;
+
             transform.position = startingPosition;
+         
+            controller.enabled = true;
         }
     }
 }
