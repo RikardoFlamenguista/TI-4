@@ -6,8 +6,8 @@ using UnityEngine;
 public class PlayerVoid : MonoBehaviour
 {
     public LayerMask voidLayer;
-    public Vector3 position;
-    public Vector3 startingPosition;
+    private Vector3 position;
+    private Vector3 startingPosition;
 
     private CharacterController controller;
 

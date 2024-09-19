@@ -96,11 +96,14 @@ public class PlayerAirHandle : MonoBehaviour
         float originalGravity = gravity;
         gravity = 0f;
 
+        // Converte o dashDirection para o espaço local do jogador
+        dashDirection = transform.TransformDirection(dashDirection);
+
         float dashTimeLeft = dashDuration;
 
         while (dashTimeLeft > 0)
         {
-            // Move o personagem na direção do dash
+            // Move o personagem na direção do dash (considerando a rotação do jogador)
             controller.Move(dashDirection * dashSpeed * Time.deltaTime);
 
             // Reduz a duração do dash
@@ -112,11 +115,13 @@ public class PlayerAirHandle : MonoBehaviour
             yield return null;  // Espera o próximo frame
         }
 
-        Debug.Log("codigo chegou aqui");
+        Debug.Log("Dash terminou");
+
         // Reativa a gravidade quando o dash termina
         gravity = originalGravity;
         isDashing = false;
     }
+
 
 
 

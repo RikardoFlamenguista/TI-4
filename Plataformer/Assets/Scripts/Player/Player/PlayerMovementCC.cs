@@ -1,3 +1,4 @@
+using Unity.VisualScripting;
 using UnityEngine;
 
 // Gerencia o movimento em solo do jogador
@@ -13,11 +14,28 @@ public class PlayerMovementCC : MonoBehaviour
     void Start()
     {
         controller = GetComponent<CharacterController>();
+
+        
     }
 
     void Update()
     {
         Move();
+        AlignRotationWithCamera();
+    }
+
+    // Alinha a rotação do personagem com a câmera
+    void AlignRotationWithCamera()
+    {
+        // Obtém a rotação da câmera em torno do eixo Y apenas
+        Vector3 cameraForward = mainCamera.transform.forward;
+        cameraForward.y = 0f; // Zera a rotação no eixo Y para evitar inclinações verticais
+
+        if (cameraForward.magnitude > 0)
+        {
+            // Define a rotação do personagem para a direção da câmera
+            transform.rotation = Quaternion.LookRotation(cameraForward);
+        }
     }
 
     // Move o jogador com base nos eixos locais
@@ -30,7 +48,7 @@ public class PlayerMovementCC : MonoBehaviour
         {
             // Aplica a movimentação no CharacterController com velocidade constante
             // Considera os eixos locais do personagem (direção atual do personagem)
-            controller.Move((mainCamera.transform.right * movement.x + mainCamera.transform.forward * movement.z) * moveSpeed * Time.deltaTime);
+            controller.Move((transform.right * movement.x + transform.forward * movement.z) * moveSpeed * Time.deltaTime);
         }
         else
         {
