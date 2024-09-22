@@ -1,6 +1,5 @@
 using System.Collections;
 using System.Collections.Generic;
-using UnityEditor.Build.Content;
 using UnityEngine;
 
 //responsavel pelos metodos de destruir obstaculo, caso o jogador tenha pontos suficientes, e pelo feedback de falha, caso nao tenha
@@ -34,6 +33,8 @@ public class ObstacleDestroyer : MonoBehaviour
         GameController.Instance.CollectedPoints -= requiredPoints;
         obstacle.SetActive(false);
         GameController.Instance.RefreshCollectedPointsUI();
+
+        this.gameObject.SetActive(false);
 
     }
 

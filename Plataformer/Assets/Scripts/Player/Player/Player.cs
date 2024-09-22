@@ -10,8 +10,8 @@ public class Player : MonoBehaviour
     public CharacterController controller;
 
     //distancia de verificacao dos raycast de pulo
-    public float groundCheckDistance = 1.0f;
-    public float groundCheckDoubleJumpDistance = 1.5f;
+    public float groundCheckDistance = 1.5f;
+    public float groundCheckDoubleJumpDistance = 1.8f;
 
     //variavel que controla se jogador esta no chao
     private static bool isGrounded;
@@ -20,6 +20,10 @@ public class Player : MonoBehaviour
     //variavel que controla esta perto demais do chao para realizar double jump (buffer eh ativado ao inves disso)
     private bool isGroundedDoubleJump;
     public bool IsGroundedDoubleJump { get { return isGroundedDoubleJump; }  }
+
+    private bool lockPlayer = false;
+
+    public bool LockPlayer { get { return lockPlayer; } set { lockPlayer = value; } }
 
     //layer do chao usada pelos raycasts
     public LayerMask groundLayer;

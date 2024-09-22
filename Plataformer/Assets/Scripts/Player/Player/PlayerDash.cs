@@ -28,7 +28,8 @@ public class PlayerDash : MonoBehaviour
     {
         GetDashDirection();
         SetCanDash();
-        HandleDash();
+        //se nao tem nada que impede o movimento, o metodo eh chamado
+        if (!Player.Instance.LockPlayer) HandleDash();
         
     }
 

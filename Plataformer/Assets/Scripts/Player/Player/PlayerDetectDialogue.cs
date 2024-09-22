@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Net;
 using UnityEngine;
 
 //controla a deteccao de areas e input para iniciar dialogo
@@ -18,11 +19,16 @@ public class PlayerDetectDialogue : MonoBehaviour
 
             if (input)
             {
+                if (!Player.Instance.LockPlayer) { 
+
+                Player.Instance.LockPlayer = true;
                 dialogue = other.gameObject.GetComponent<Dialogue>();
                 dialogue.StartConversation();
                 Debug.Log("dialogo encontrado");
 
                 input = false;
+                
+                }
             }
         }
     }

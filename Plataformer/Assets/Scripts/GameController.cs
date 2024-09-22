@@ -72,7 +72,7 @@ public class GameController : MonoBehaviour
     private void SetStartPoints()
     {
         pointsLeft = points.transform.childCount;
-        totalPoints = pointsLeft;
+        totalPoints = pointsLeft + 1;
         RefreshCollectedPointsUI();
     }
 

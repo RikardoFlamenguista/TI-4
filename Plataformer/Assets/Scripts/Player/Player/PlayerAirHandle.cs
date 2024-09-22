@@ -90,6 +90,9 @@ public class PlayerAirHandle : MonoBehaviour
     //corrotina que desativa gravidade enquanto jogador esta dando dash e move o personagem para frente
     public IEnumerator HandleDashIE(float dashSpeed, Vector3 dashDirection, float dashDuration)
     {
+        //bloqueia controle do jogador durante o dash
+        //Player.Instance.LockPlayer = true;
+
         isDashing = true;
 
         // Temporariamente desativa a gravidade
@@ -120,6 +123,8 @@ public class PlayerAirHandle : MonoBehaviour
         // Reativa a gravidade quando o dash termina
         gravity = originalGravity;
         isDashing = false;
+        //restaura controle apos dash
+        //Player.Instance.LockPlayer = false;
     }
 
 

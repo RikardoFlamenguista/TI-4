@@ -39,6 +39,8 @@ public class DialogueManager : MonoBehaviour
                 {
                     StopAllCoroutines();
                     textComponent.text = lines[index];
+
+                 
                 }
             }
         }
@@ -71,6 +73,8 @@ public class DialogueManager : MonoBehaviour
             textComponent.text = string.Empty;
             StartCoroutine(TypeLine());
         }
+
+        //encerra o dialogo
         else
         {
             index = 0;
@@ -78,6 +82,7 @@ public class DialogueManager : MonoBehaviour
             dialogueGoing = false;
             textComponent.text = string.Empty;
             dialogueBox.SetActive(false);
+            Player.Instance.LockPlayer = false;
         }
     }
 }

@@ -37,8 +37,8 @@ public class PlayerBaseJump : MonoBehaviour
             jumpBufferCounter -= Time.deltaTime;
         }
 
-
-        HandleJump();
+        //se nao tem nada que impede o movimento, o metodo eh chamado
+        if (!Player.Instance.LockPlayer) HandleJump();
     }
 
   
