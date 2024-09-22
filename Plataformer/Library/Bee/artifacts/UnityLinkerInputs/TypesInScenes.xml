@@ -17,7 +17,6 @@
 		<type fullname="PlayerGravity" preserve="nothing"/>
 		<type fullname="PlayerMovementCC" preserve="nothing"/>
 		<type fullname="PlayerVoid" preserve="nothing"/>
-		<type fullname="SpriteFollowTarget" preserve="nothing"/>
 		<type fullname="TimerController" preserve="nothing"/>
 	</assembly>
 	<assembly fullname="Cinemachine">
@@ -64,7 +63,6 @@
 		<type fullname="UnityEngine.LightmapSettings" preserve="nothing"/>
 		<type fullname="UnityEngine.Material" preserve="nothing"/>
 		<type fullname="UnityEngine.Mesh" preserve="nothing"/>
-		<type fullname="UnityEngine.MeshCollider" preserve="nothing"/>
 		<type fullname="UnityEngine.MeshFilter" preserve="nothing"/>
 		<type fullname="UnityEngine.MeshRenderer" preserve="nothing"/>
 		<type fullname="UnityEngine.MonoBehaviour" preserve="nothing"/>

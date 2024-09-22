@@ -18,7 +18,6 @@ ScriptsOnlyBuild:
     - PlayerGravity
     - PlayerMovementCC
     - PlayerVoid
-    - SpriteFollowTarget
     - TimerController
     Cinemachine.dll:
     - Cinemachine.CinemachineBrain
@@ -143,8 +142,6 @@ ScriptsOnlyBuild:
       Script: {instanceID: 0}
     - Class: 54
       Script: {instanceID: 0}
-    - Class: 64
-      Script: {instanceID: 0}
     - Class: 65
       Script: {instanceID: 0}
     - Class: 81
@@ -158,79 +155,77 @@ ScriptsOnlyBuild:
     - Class: 108
       Script: {instanceID: 0}
     - Class: 114
-      Script: {instanceID: 25536}
+      Script: {instanceID: 25510}
     - Class: 114
-      Script: {instanceID: 25770}
+      Script: {instanceID: 25744}
     - Class: 114
-      Script: {instanceID: 26028}
+      Script: {instanceID: 26002}
     - Class: 114
-      Script: {instanceID: 26146}
+      Script: {instanceID: 26120}
     - Class: 114
-      Script: {instanceID: 26218}
+      Script: {instanceID: 26192}
     - Class: 114
-      Script: {instanceID: 26378}
+      Script: {instanceID: 26352}
     - Class: 114
-      Script: {instanceID: 26556}
+      Script: {instanceID: 26530}
     - Class: 114
-      Script: {instanceID: 26562}
+      Script: {instanceID: 26536}
     - Class: 114
-      Script: {instanceID: 26692}
+      Script: {instanceID: 26666}
     - Class: 114
-      Script: {instanceID: 26710}
+      Script: {instanceID: 26684}
     - Class: 114
-      Script: {instanceID: 26714}
+      Script: {instanceID: 27118}
     - Class: 114
-      Script: {instanceID: 27144}
+      Script: {instanceID: 27292}
     - Class: 114
-      Script: {instanceID: 27318}
+      Script: {instanceID: 27350}
     - Class: 114
-      Script: {instanceID: 27376}
+      Script: {instanceID: 27816}
     - Class: 114
-      Script: {instanceID: 27842}
+      Script: {instanceID: 28044}
     - Class: 114
-      Script: {instanceID: 28070}
+      Script: {instanceID: 28286}
     - Class: 114
-      Script: {instanceID: 28312}
+      Script: {instanceID: 28418}
     - Class: 114
-      Script: {instanceID: 28444}
+      Script: {instanceID: 28742}
     - Class: 114
-      Script: {instanceID: 28768}
+      Script: {instanceID: 28818}
     - Class: 114
-      Script: {instanceID: 28844}
+      Script: {instanceID: 30090}
     - Class: 114
-      Script: {instanceID: 30116}
+      Script: {instanceID: 30282}
     - Class: 114
-      Script: {instanceID: 30308}
+      Script: {instanceID: 30352}
     - Class: 114
-      Script: {instanceID: 30378}
+      Script: {instanceID: 30516}
     - Class: 114
-      Script: {instanceID: 30542}
+      Script: {instanceID: 30604}
     - Class: 114
-      Script: {instanceID: 30630}
+      Script: {instanceID: 30632}
     - Class: 114
-      Script: {instanceID: 30658}
+      Script: {instanceID: 30868}
     - Class: 114
-      Script: {instanceID: 30894}
+      Script: {instanceID: 31626}
     - Class: 114
-      Script: {instanceID: 31652}
+      Script: {instanceID: 31662}
     - Class: 114
-      Script: {instanceID: 31688}
+      Script: {instanceID: 31782}
     - Class: 114
-      Script: {instanceID: 31808}
+      Script: {instanceID: 31790}
     - Class: 114
-      Script: {instanceID: 31816}
+      Script: {instanceID: 31856}
     - Class: 114
-      Script: {instanceID: 31882}
+      Script: {instanceID: 31908}
     - Class: 114
-      Script: {instanceID: 31934}
+      Script: {instanceID: 31910}
     - Class: 114
-      Script: {instanceID: 31936}
+      Script: {instanceID: 32360}
     - Class: 114
-      Script: {instanceID: 32386}
+      Script: {instanceID: 32666}
     - Class: 114
-      Script: {instanceID: 32692}
-    - Class: 114
-      Script: {instanceID: 32746}
+      Script: {instanceID: 32720}
     - Class: 115
       Script: {instanceID: 0}
     - Class: 128
@@ -1623,4 +1618,4 @@ ScriptsOnlyBuild:
   platform: 19
   scenePathNames:
   - Assets/Scenes/SampleScene.unity
-  playerPath: C:/Users/lhss2/OneDrive/Documentos/Build/TI4blocagem.exe
+  playerPath: C:/Users/gusta/Documents/GitHub/TI-4/Plataformer/Jogo/TI4blocagem.exe
