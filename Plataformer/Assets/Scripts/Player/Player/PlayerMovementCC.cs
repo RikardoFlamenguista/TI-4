@@ -30,13 +30,13 @@ public class PlayerMovementCC : MonoBehaviour
     // Alinha a rotação do personagem com a câmera
     void AlignRotationWithCamera()
     {
-        // Obtém a rotação da câmera em torno do eixo Y apenas
+        // Obtem a rotaçao da câmera em torno do eixo Y apenas
         Vector3 cameraForward = mainCamera.transform.forward;
-        cameraForward.y = 0f; // Zera a rotação no eixo Y para evitar inclinações verticais
+        cameraForward.y = 0f; 
 
         if (cameraForward.magnitude > 0)
         {
-            // Define a rotação do personagem para a direção da câmera
+            // Define a rotaçco do personagem para a direção da câmera
             transform.rotation = Quaternion.LookRotation(cameraForward);
         }
     }
