@@ -7,6 +7,7 @@ public class PlayerAirHandle : MonoBehaviour
 {
     public CharacterController controller;
     private Vector3 velocity;
+
     public float gravity = -20f;
 
     private float jumpTimeCounter;
@@ -42,7 +43,7 @@ public class PlayerAirHandle : MonoBehaviour
     {
         if (Player.Instance.IsGrounded && velocity.y < 0)
         {
-            velocity.y = 0f;
+            velocity.y = 0.01f;
         }
 
         velocity.y += gravity * Time.deltaTime;

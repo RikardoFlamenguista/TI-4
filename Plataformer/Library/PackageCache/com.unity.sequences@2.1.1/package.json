@@ -31,5 +31,6 @@
       "description": "This sample contains a Scene with a Master Sequence that uses the Scene Management features. It is made of multiple sequences, each with their own Scene Activation Track to control the activation of different Scenes for set and lighting.",
       "path": "Samples~/SceneManagement"
     }
-  ]
+  ],
+  "_fingerprint": "ad2354e142b80a219da0fc2c30055d53a00ce1fd"
 }
