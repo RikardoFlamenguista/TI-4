@@ -1252,8 +1252,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   moveSpeed: 25
-  jumpForce: 10
   mainCamera: {fileID: 0}
+  speedBoostForce: 0
 --- !u!143 &252905662
 CharacterController:
   m_ObjectHideFlags: 0
@@ -2160,7 +2160,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 365868129}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.1491851, y: -0.000000017013829, z: 0.0000000025669358, w: 0.9888093}
+  m_LocalRotation: {x: 0.1491851, y: 0.000000017013829, z: -0.0000000025669358, w: 0.9888093}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -9878,8 +9878,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   moveSpeed: 25
-  jumpForce: 10
   mainCamera: {fileID: 1833196527}
+  speedBoostForce: 1.5
 --- !u!114 &1359191031
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -14446,7 +14446,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1833196527}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.14918512, y: -0.000000034027657, z: 0.000000005133872, w: 0.9888093}
+  m_LocalRotation: {x: 0.14918512, y: 0.000000034027657, z: -0.000000005133872, w: 0.9888093}
   m_LocalPosition: {x: -0.65, y: 5.42, z: -13.38}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0

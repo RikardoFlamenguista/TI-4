@@ -5,26 +5,28 @@ using UnityEngine;
 public class PlayerMovementCC : MonoBehaviour
 {
     public float moveSpeed = 5f;  // Velocidade fixa do jogador
-    public float jumpForce = 10f; // Força do pulo
 
     public GameObject mainCamera;
 
     private CharacterController controller;
 
+    private bool speedBoost;
+    public float speedBoostForce = 2;
+
     void Start()
     {
         controller = GetComponent<CharacterController>();
 
-        
     }
 
     void Update()
     {
         //se nao tem nada que impede o movimento, o metodo eh chamado
         if(!Player.Instance.LockPlayer) Move();
-        
-        
         AlignRotationWithCamera();
+
+        DetectBoostInput();
+
     }
 
     // Alinha a rotação do personagem com a câmera
@@ -41,6 +43,13 @@ public class PlayerMovementCC : MonoBehaviour
         }
     }
 
+    private void DetectBoostInput()
+    {
+        if (Input.GetKeyDown(KeyCode.LeftShift)) speedBoost = true;
+        if (Input.GetKeyUp(KeyCode.LeftShift)) speedBoost = false;
+
+    }
+
     // Move o jogador com base nos eixos locais
     void Move()
     {
@@ -51,7 +60,8 @@ public class PlayerMovementCC : MonoBehaviour
         {
             // Aplica a movimentação no CharacterController com velocidade constante
             // Considera os eixos locais do personagem (direção atual do personagem)
-            controller.Move((transform.right * movement.x + transform.forward * movement.z) * moveSpeed * Time.deltaTime);
+            if (!speedBoost || !Player.Instance.IsGrounded) controller.Move((transform.right * movement.x + transform.forward * movement.z) * moveSpeed * Time.deltaTime);
+            else controller.Move((transform.right * movement.x + transform.forward * movement.z) * moveSpeed * speedBoostForce * Time.deltaTime);
         }
         else
         {
