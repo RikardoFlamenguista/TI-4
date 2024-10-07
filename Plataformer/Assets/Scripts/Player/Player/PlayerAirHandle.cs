@@ -56,6 +56,7 @@ public class PlayerAirHandle : MonoBehaviour
     //gerencia a aplicacao de forca do salto base do jogador, a deteccao de Input eh feita em PlayerBaseJump
     public void HandleBaseJump(float jumpForce)
     {
+        Debug.Log("pulando");
         // Inicia o pulo e o contador de tempo de pulo
         velocity.y = Mathf.Sqrt(jumpForce * -2f * gravity);
 

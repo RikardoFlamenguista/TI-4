@@ -10,7 +10,6 @@ public class PlayerBaseJump : MonoBehaviour
     public float maxJumpTime = 0.2f; // Tempo máximo que o pulo pode ser sustentado
     public float minJumpTime = 0.1f; // Tempo mínimo para adicionar extraJumpForce
 
-    private float jumpTimeCounter;
     private float jumpBufferTime = 0.2f;
     private float jumpBufferCounter;
 
@@ -45,6 +44,7 @@ public class PlayerBaseJump : MonoBehaviour
     //contra o pulo base do jogador
     void HandleJump()
     {
+        
         // Se houver buffer de pulo e o personagem está no chão
         if (Player.Instance.IsGrounded && jumpBufferCounter > 0f)
         {
