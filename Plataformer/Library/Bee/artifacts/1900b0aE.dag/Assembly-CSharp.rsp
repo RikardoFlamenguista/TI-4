@@ -413,6 +413,7 @@
 "Assets/Scripts/PDJ/Observer/Movable Block.cs"
 "Assets/Scripts/PDJ/Observer/PlayerDie.cs"
 "Assets/Scripts/PDJ/Observer/Subject.cs"
+"Assets/Scripts/PDJ/PlayerDashStrategy.cs"
 "Assets/Scripts/PDJ/PlayerPDJTEMP.cs"
 "Assets/Scripts/Player/Player/Obsolete/PlayerJump.cs"
 "Assets/Scripts/Player/Player/Obsolete/PlayerMovement.cs"
