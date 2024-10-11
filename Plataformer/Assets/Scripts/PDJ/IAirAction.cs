@@ -4,7 +4,7 @@ using UnityEngine;
 
 public interface IAirAction
 {
-    public void HandleMove();
+    public void HandleMove(GameObject go);
 
 
 }
