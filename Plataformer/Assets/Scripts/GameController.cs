@@ -1,16 +1,12 @@
-using System.Collections;
-using System.Collections.Generic;
 using TMPro;
-using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine;
 
-
-//classe estatica, game controller assuntos gerais, pause, game over, tempo restante, contagem de pontos, etc
 public class GameController : MonoBehaviour
 {
     public static GameController Instance { get; private set; }
 
-    //variaveis para controle de pontos restantes
+    //variáveis para controle de pontos restantes
     public GameObject points;
     public TextMeshProUGUI pointsText;
     private int pointsLeft;
@@ -18,17 +14,12 @@ public class GameController : MonoBehaviour
     private int collectedPoints = 0;
     public int CollectedPoints { get { return collectedPoints; } set { collectedPoints = value; } }
 
-
-
-    //variaveis de menus
+    //variáveis de menus
     public GameObject pauseMenu;
     private bool isPaused = false;
 
     public GameObject victoryMenu;
     public GameObject gameOverMenu;
-
-
-
 
     // Start is called before the first frame update
     void Awake()
@@ -36,39 +27,35 @@ public class GameController : MonoBehaviour
         if (Instance == null)
         {
             Instance = this;
+            DontDestroyOnLoad(gameObject); // Mantém o GameController entre cenas
         }
         else
         {
-            //eh pra destruir instance ou gameobject aqui? Nao lembro, conferir depois//
-            Destroy(Instance);
-            Debug.Log("Instancia ja existe, deletando");
+            Destroy(gameObject); // Destrói o gameObject se uma instância já existir
+            Debug.Log("Instância já existe, deletando a nova");
+            return; // Evita que o código abaixo seja executado na instância que será destruída
         }
-       
 
-        //o menu de pause deve estar desativado no inicio do jogo
+        // O menu de pause deve estar desativado no início do jogo
         pauseMenu.SetActive(false);
 
-        //no comeco do jogo ajusta a UI de pontos
+        // No começo do jogo ajusta a UI de pontos
         SetStartPoints();
-    
-
     }
 
     // Update is called once per frame
     void Update()
     {
         PauseGameHotkey();
-
     }
 
-    //atualiza a UI de pontos restantes
+    // Atualiza a UI de pontos restantes
     public void RefreshCollectedPointsUI()
     {
-
         pointsText.text = collectedPoints.ToString() + "/" + totalPoints.ToString();
     }
 
-    //metodo chamado apenas no awake para ajustar a UI de pontos
+    // Método chamado apenas no awake para ajustar a UI de pontos
     private void SetStartPoints()
     {
         pointsLeft = points.transform.childCount;
@@ -76,97 +63,75 @@ public class GameController : MonoBehaviour
         RefreshCollectedPointsUI();
     }
 
-    //chamado por PlayerCollectPoints sempre que o jogador coleta um ponto, ajusta a variavel de pontos restantes e atualiza o texto
+    // Chamado por PlayerCollectPoints sempre que o jogador coleta um ponto, ajusta a variável de pontos restantes e atualiza o texto
     public void CollectPoint()
     {
         pointsLeft = pointsLeft - 1;
-
         collectedPoints = collectedPoints + 1;
         RefreshCollectedPointsUI();
-
     }
 
-    //controla jogo pausado e despausado usando tecla de atalho do teclado
+    // Controla o jogo pausado e despausado usando tecla de atalho do teclado
     private void PauseGameHotkey()
     {
         if (Input.GetKeyDown(KeyCode.P))
         {
-            //pausa o jogo
             if (!isPaused)
             {
                 PauseGame();
-
             }
-
-            //despausa o jogo
-            else if (isPaused)
+            else
             {
                 ResumeGame();
-
             }
-
         }
-
     }
 
-        //pausa o jogo
+    // Pausa o jogo
     public void PauseGame()
     {
         pauseMenu.SetActive(true);
         isPaused = true;
         Time.timeScale = 0.0f;
-
     }
 
-    //despausa o jogo
+    // Despausa o jogo
     public void ResumeGame()
     {
         pauseMenu.SetActive(false);
         isPaused = false;
         Time.timeScale = 1.0f;
-
     }
 
-    //sai do jogo
+    // Sai do jogo
     public void QuitGame()
     {
         Time.timeScale = 1.0f;
-
-        //encerra o jogo no editor ou na build, dependendo de onde esta sendo rodado
 #if UNITY_EDITOR
         UnityEditor.EditorApplication.isPlaying = false;
 #else
         Application.Quit();
 #endif
-
     }
 
-    //reinicia o jogo (atualmente nao tem checkpoint, entao reinicia desde o inicio)
+    // Reinicia o jogo (atualmente não tem checkpoint, então reinicia desde o início)
     public void RestartGame()
     {
         Time.timeScale = 1.0f;
         SceneManager.LoadScene(SceneManager.GetActiveScene().name);
-
     }
 
-    //ativa o menu de vitoria
+    // Ativa o menu de vitória
     public void Victory()
     {
         victoryMenu.SetActive(true);
         Time.timeScale = 0.0f;
-
     }
 
-    //ativa o menu de game over
+    // Ativa o menu de game over
     public void GameOver()
     {
         gameOverMenu.SetActive(true);
         Time.timeScale = 0.0f;
-
     }
-
-
-
-
-
 }
